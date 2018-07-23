@@ -54,7 +54,7 @@ class Student
   
   def .first_X_stuents_in_grade_10
      sql = <<-SQL
-       SELECT * FROM students WHERE students.grade = 10 
+       SELECT * FROM students WHERE students.grade = 10 LIMIT ?
        SQL
   
   def save
