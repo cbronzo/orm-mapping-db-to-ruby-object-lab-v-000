@@ -60,6 +60,7 @@ class Student
        DB[:conn].execute(sql, x).map do |student|
         new_from_db(student)
       end
+    end
   
   def save
     sql = <<-SQL
