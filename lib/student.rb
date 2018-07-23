@@ -56,6 +56,10 @@ class Student
      sql = <<-SQL
        SELECT * FROM students WHERE students.grade = 10 LIMIT ?
        SQL
+       
+       DB[:conn].execute(sql, x).map do |student|
+        new_from_db(student)
+      end
   
   def save
     sql = <<-SQL
