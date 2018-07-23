@@ -47,7 +47,8 @@ class Student
        SELECT * FROM students WHERE students.grade < 12 
        SQL
 
-       DB[:conn].execute(sql)
+       DB[:conn].execute(sql).map do |student|
++        new_from_db(student)
   end
   
   def save
