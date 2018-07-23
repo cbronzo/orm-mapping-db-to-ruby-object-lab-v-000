@@ -73,7 +73,9 @@ class Student
     end
     
     def self.all_students_in_grade_x(x)
-      
+      sql = <<-SQL
+       SELECT * FROM students WHERE students.grade = x LIMIT ?
+       SQL
       
       DB[:conn].execute(sql, x).map do |student|
         new_from_db(student)
