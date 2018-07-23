@@ -71,7 +71,14 @@ class Student
         new_from_db(student)
       end.first
     end
+    
+    def self.all_students_in_grade_x(x)
       
+      
+      DB[:conn].execute(sql, x).map do |student|
+        new_from_db(student)
+      end
+    end
   
   def save
     sql = <<-SQL
