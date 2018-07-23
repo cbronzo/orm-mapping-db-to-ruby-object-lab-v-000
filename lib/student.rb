@@ -33,6 +33,23 @@ class Student
     end.first
   end
   
+  
+  def self.count_all_students_in_grade_9
+    sql = <<-SQL
+       SELECT * FROM students WHERE students.grade = 9
+       SQL
+
+       DB[:conn].execute(sql)
+  end
+  
+  def self.students_below_12th_grade
+    sql = <<-SQL
+       SELECT * FROM students WHERE students.grade => 12
+       SQL
+
+       DB[:conn].execute(sql)
+  end
+  
   def save
     sql = <<-SQL
       INSERT INTO students (name, grade) 
